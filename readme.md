@@ -1,1 +1,1 @@
-SE 300 project: Planetary Landing Simulation
+SE 300 hello world repository

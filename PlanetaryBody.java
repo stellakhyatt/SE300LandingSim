@@ -121,7 +121,7 @@ public class PlanetaryBody {
 			atmDensity = 0; //atmosphere is negligible on both these bodies
 		}
 		else {
-			double G = 6.67428*Math.pow(10,-11);
+			double G = 6.67428E-11;
 			double g = (G*mass)/Math.pow(radius,2);
 			double B = (6.5/1000);
 			double T_0 = 15+273.15;

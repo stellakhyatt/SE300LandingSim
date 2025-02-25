@@ -129,5 +129,22 @@ public class PlanetaryBody {
 			atmDensity = 1.225*Math.pow((1-(B/T_0)*height),power);
 		}
 	}
-
+	public double getDensity() {
+		return atmDensity;
+	}
+	public double getMass() {
+		return mass;
+	}
+	public double getRadius() {
+		return radius;
+	}
+	public double getRotationRate() {
+		return rotationRate;
+	}
+	public double getOblateness() {
+		return oblateness;
+	}
+	public String getName() {
+		return name;
+	}
 }

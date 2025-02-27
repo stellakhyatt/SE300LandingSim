@@ -42,7 +42,7 @@ public class SimulationParameters {
 				}
 			}
 		}
-			
+		return true;		
 	}
 
 	public String [] getPlanetParameters(){

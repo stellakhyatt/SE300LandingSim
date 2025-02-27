@@ -38,82 +38,11 @@ public class PlanetaryBody {
 			atmDensity = p/(0.1921*(T+273.15));
 		}
 		else if(name.equalsIgnoreCase("Venus")) {
-			double R = 0.19139;
-			if(height==100) {
-				p = 0.0000266*101325;
-				T = 273.15-112;
-			}
-			else if(height==90) {
-				p = 0.0003736*101325;
-				T = 273.15-104;
-			}
-			else if(height==80) {
-				p = 0.00476*101325;
-				T = 273.15-76;
-			}
-			else if(height==70) {
-				p = 0.0369*101325;
-				T = 273.15-43;
-			}
-			else if(height==65) {
-				p = 0.09765*101325;
-				T = 273.15-30;
-			}
-			else if(height==60) {
-				p = 0.2357*101325;
-				T = 273.15-10;
-			}
-			else if(height==55) {
-				p = 0.5314*101325;
-				T = 273.15+27;
-			}
-			else if(height==50) {
-				p = 1.066*101325;
-				T = 273.15+75;
-			}
-			else if(height==45) {
-				p = 1.979*101325;
-				T = 273.15+110;
-			}
-			else if(height==40) {
-				p = 3.501*101325;
-				T = 273.15+143;
-			}
-			else if(height==35) {
-				p = 5.917*101325;
-				T = 273.15+180;
-			}
-			else if(height==30) {
-				p = 9.851*101325;
-				T = 273.15+222;
-			}
-			else if(height==25) {
-				p = 14.93*101325;
-				T = 273.15+264;
-			}
-			else if(height==20) {
-				p = 22.52*101325;
-				T = 273.15+306;
-			}
-			else if(height==15) {
-				p = 33.04*101325;
-				T = 273.15+348;
-			}
-			else if(height==10) {
-				p = 47.39*101325;
-				T = 273.15+385;
-			}
-			else if(height==5) {
-				p = 66.65*101325;
-				T = 273.15+424;
-			}
-			else if(height==0) {
-				p =92.1*101325;
-				T =273.15+462;
-			}
-			else {
-				p = (92.1*101325)+(((0.0000266-92.1)*101325)/100)*height;
-				T = (273.15+462)+((-112-462)/100)*height;
+			double R = 0.19139*1000;
+			p = -0.0035*Math.pow(height, 5)+ 1.3004*Math.pow(height, 4) - 195.23*Math.pow(height, 3) + (1.4908E4)*Math.pow(height, 2) - (5.822E5)*height + 9.3239E6;
+			T = -(4.6611E-6)*Math.pow(height, 4) + 0.0014*Math.pow(height, 3) - 0.0895*Math.pow(height, 2) - 6.3743*height + 732.4079;
+			if(p<0) {
+				p = 0;
 			}
 			atmDensity = p/(R*T);
 		}
@@ -146,5 +75,12 @@ public class PlanetaryBody {
 	}
 	public String getName() {
 		return name;
+	}
+
+	//Test Main
+	public static void main(String [] args) {
+		PlanetaryBody venus = new PlanetaryBody("Venus",4.87E24,6052,0,6.2289E-7);
+		venus.setDensity(98.5);
+		System.out.println(venus.getDensity());
 	}
 }

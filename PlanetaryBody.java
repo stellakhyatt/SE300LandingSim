@@ -40,7 +40,7 @@ public class PlanetaryBody {
 		else if(name.equalsIgnoreCase("Venus")) {
 			double R = 0.19139*1000;
 			p = -0.0035*Math.pow(height, 5)+ 1.3004*Math.pow(height, 4) - 195.23*Math.pow(height, 3) + (1.4908E4)*Math.pow(height, 2) - (5.822E5)*height + 9.3239E6;
-			T = -(4.6611E-6)*Math.pow(height, 4) + 0.0014*Math.pow(height, 3) - 0.0895*Math.pow(height, 2) - 6.3743*height + 732.4079;
+			T = -(1.4953E-7)*Math.pow(height, 5)+(3.2362E-5)*Math.pow(height, 4) - 0.0018*Math.pow(height, 3) + 0.0255*Math.pow(height, 2) - 7.8467*height + 735.6017;
 			if(p<0) {
 				p = 0;
 			}

@@ -4,11 +4,24 @@ package SE300ProjectCode;
 import java.util.*;
 import java.io.*;
 public class SimulationParameters {
-	private Map<String,Double> planetParameters;
-	private Map<String,Double> spacecraftParameters;
+	private ArrayList <String> planetParameters;
+	private ArrayList <String> spacecraftParameters;
 	
-	public Map<String,Double> loadFromFile(String filename) {
-		Map<String,Double> data = null;
+	public ArrayList<String,Double> loadFromFile(String filename) {
+		ArrayList<String> data = new ArrayList<String>();
+		try
+			{
+				Scanner inFile = new Scanner(new File(filename));
+				while(inFile.hasNext())
+					{
+						String line = inFile.nextLine();
+						data.add(line);
+					}
+			}
+		catch(Exception e)
+			{
+				return null;
+			}
 		return data;
 	}
 	

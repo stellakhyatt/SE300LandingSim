@@ -4,10 +4,10 @@ package SE300ProjectCode;
 import java.util.*;
 import java.io.*;
 public class SimulationParameters {
-	private ArrayList <String> planetParameters;
-	private ArrayList <String> spacecraftParameters;
+	private String [] planetParameters;
+	private String [] spacecraftParameters;
 	
-	public ArrayList<String,Double> loadFromFile(String filename) {
+	private ArrayList<String> loadFromFile(String filename) {
 		ArrayList<String> data = new ArrayList<String>();
 		try
 			{
@@ -27,6 +27,30 @@ public class SimulationParameters {
 	
 	public void saveToFile (String filename) {
 		
+	}
+
+	public boolean setPlanetParameters(String filename, int index){
+		ArrayList<String> data = loadFromFile(filename);
+		if (data == null){
+			return false;
+		}
+		for(int i = 1; i<data.size(); i++){
+			if(data.get(i) != null){
+				String [] planet = data.get(i).split(",");
+				if(i == index){
+					planetParameters = planet;
+				}
+			}
+		}
+			
+	}
+
+	public String [] getPlanetParameters(){
+		return planetParameters;
+	}
+
+	public String [] getSpacecraftParameters(){
+		return spacecraftParameters;
 	}
 
 }

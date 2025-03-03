@@ -10,7 +10,7 @@ public class PlanetaryBody {
 	private double atmDensity;
 	
 	public PlanetaryBody(double m, double r, String n, double rr, double o) {
-		if(m>0) {
+		if(m<0) {
 			m = 0;
 		}
 		if(r<0) {
@@ -75,6 +75,11 @@ public class PlanetaryBody {
 	}
 	public String getName() {
 		return name;
+	}
+	public double getGravity(double h){
+		double G = 6.67428E-11;
+		double g = (G*mass)/Math.pow(h+radius,2);
+		return g;
 	}
 
 	//Test Main

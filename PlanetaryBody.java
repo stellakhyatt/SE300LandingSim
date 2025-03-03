@@ -84,8 +84,15 @@ public class PlanetaryBody {
 
 	//Test Main
 	public static void main(String [] args) {
-		PlanetaryBody venus = new PlanetaryBody("Venus",4.87E24,6052,0,6.2289E-7);
-		venus.setDensity(98.5);
-		System.out.println(venus.getDensity());
+		SimulationParameters parameters = new SimulationParameters();
+		if(!parameters.setPlanetParameters("SE300_Planet data.csv",0)){
+			System.out.println("Planet file not found!")
+		}
+		else{
+			String [] planet = parameters.getPlanetParameters();
+			PlanetaryBody venus = new PlanetaryBody(planet[0],Double.parseDouble(planet[1]),Double.parseDouble(planet[2]),Double.parseDouble(planet[3]),Double.parseDouble(planet[4]);
+			venus.setDensity(98.5);
+			System.out.println(venus.getDensity());
+		}
 	}
 }

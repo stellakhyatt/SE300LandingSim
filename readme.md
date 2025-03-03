@@ -1,1 +1,1 @@
-SE 300 hello world repository
+SE 300 project: Spacecraft Landing Simulation

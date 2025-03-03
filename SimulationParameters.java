@@ -4,7 +4,7 @@ package SE300ProjectCode;
 import java.util.*;
 import java.io.*;
 public class SimulationParameters {
-	private String [] planetParameters;
+	private ArrayList<PlanetaryBody> planets;
 	private String [] spacecraftParameters;
 	
 	private ArrayList<String> loadFromFile(String filename) {
@@ -34,23 +34,29 @@ public class SimulationParameters {
 		if (data == null){
 			return false;
 		}
-		for(int i = 1; i<data.size(); i++){
+		for(int i = 0; i<data.size(); i++){
 			if(data.get(i) != null){
 				String [] planet = data.get(i).split(",");
-				if(i == index){
-					planetParameters = planet;
-				}
+				PlanetaryBody p = new PlanetaryBody(planet[0],Double.parseDouble(planet[1]),Double.parseDouble(planet[2]),Double.parseDouble(planet[4]),Double.parseDouble(planet[3]));
+				planets.add(p);
 			}
 		}
 		return true;		
 	}
 
-	public String [] getPlanetParameters(){
-		return planetParameters;
+	public ArrayList<PlanetaryBody> getPlanets(){
+		return planets;
 	}
 
 	public String [] getSpacecraftParameters(){
 		return spacecraftParameters;
+	}
+	
+	public static void main(String[] args) {
+		SimulationParameters parameters = new SimulationParameters();
+		parameters.setPlanetParameters("SE300_Planet data.csv", 0);
+		ArrayList<PlanetaryBody> planets = parameters.getPlanets();
+		System.out.println(planets.get(0).getName());
 	}
 
 }

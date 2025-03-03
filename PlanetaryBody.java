@@ -1,6 +1,7 @@
 package SE300ProjectCode;
 
 import java.math.*;
+import java.util.ArrayList;
 public class PlanetaryBody {
 	private double mass;
 	private double radius;
@@ -9,7 +10,7 @@ public class PlanetaryBody {
 	private double oblateness;
 	private double atmDensity;
 	
-	public PlanetaryBody(double m, double r, String n, double rr, double o) {
+	public PlanetaryBody(String n, double m, double r, double rr, double o) {
 		if(m<0) {
 			m = 0;
 		}
@@ -86,11 +87,11 @@ public class PlanetaryBody {
 	public static void main(String [] args) {
 		SimulationParameters parameters = new SimulationParameters();
 		if(!parameters.setPlanetParameters("SE300_Planet data.csv",0)){
-			System.out.println("Planet file not found!")
+			System.out.println("Planet file not found!");
 		}
 		else{
-			String [] planet = parameters.getPlanetParameters();
-			PlanetaryBody venus = new PlanetaryBody(planet[0],Double.parseDouble(planet[1]),Double.parseDouble(planet[2]),Double.parseDouble(planet[3]),Double.parseDouble(planet[4]);
+			ArrayList<PlanetaryBody> planets = parameters.getPlanets();
+			PlanetaryBody venus = planets.get(0); 
 			venus.setDensity(98.5);
 			System.out.println(venus.getDensity());
 		}

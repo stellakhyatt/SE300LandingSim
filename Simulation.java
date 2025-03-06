@@ -36,7 +36,7 @@ public class Simulation {
 	        
 	        // Need checking: location of the parameters (row/column)
 	        planetaryBody = new PlanetaryBody(
-	            Double.parseDouble(planetParams[0]), // name
+	            planetParams[0], // name
 	            Double.parseDouble(planetParams[1]), // mass
 	            Double.parseDouble(planetParams[2]), // radius
 	            Double.parseDouble(planetParams[3]), // oblateness

@@ -29,7 +29,7 @@ public class SimulationParameters {
 		
 	}
 
-	public boolean setPlanetParameters(String filename, int index){
+	public boolean setPlanetParameters(String filename){
 		ArrayList<String> data = loadFromFile(filename);
 		if (data == null){
 			return false;
@@ -58,7 +58,7 @@ public class SimulationParameters {
 	
 	public static void main(String[] args) {
 		SimulationParameters parameters = new SimulationParameters();
-		parameters.setPlanetParameters("SE300_Planet data.csv", 0);
+		parameters.setPlanetParameters("se300_planet_data.csv");
 		ArrayList<PlanetaryBody> planets = parameters.getPlanets();
 		System.out.println(planets.get(0).getName());
 	}

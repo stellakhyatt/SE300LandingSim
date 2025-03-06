@@ -86,7 +86,7 @@ public class PlanetaryBody {
 	//Test Main
 	public static void main(String [] args) {
 		SimulationParameters parameters = new SimulationParameters();
-		if(!parameters.setPlanetParameters("SE300_Planet data.csv",0)){
+		if(!parameters.setPlanetParameters("SE300_Planet data.csv")){
 			System.out.println("Planet file not found!");
 		}
 		else{

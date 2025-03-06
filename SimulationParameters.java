@@ -37,7 +37,11 @@ public class SimulationParameters {
 		for(int i = 0; i<data.size(); i++){
 			if(data.get(i) != null){
 				String [] planet = data.get(i).split(",");
-				PlanetaryBody p = new PlanetaryBody(planet[0],Double.parseDouble(planet[1]),Double.parseDouble(planet[2]),Double.parseDouble(planet[4]),Double.parseDouble(planet[3]));
+				PlanetaryBody p = new PlanetaryBody(planet[0],
+								    Double.parseDouble(planet[1]),
+								    Double.parseDouble(planet[2]),
+								    Double.parseDouble(planet[4]),
+								    Double.parseDouble(planet[3]));
 				planets.add(p);
 			}
 		}

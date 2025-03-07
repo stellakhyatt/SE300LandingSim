@@ -59,7 +59,7 @@ public class Simulation {
 				System.out.println("Error! Invalid planet or no planet entered!");
 			}
 		}
-		System.out.println("You selected the planet: " + planetaryBody.getName());
+		System.out.println("You selected the planet: " + planetaryBody.getName());//As of now this line is for testing purposes (ensuring the correct planet is selected)
 		}
     	}
 	

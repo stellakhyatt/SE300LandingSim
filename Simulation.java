@@ -34,7 +34,9 @@ public class Simulation {
 		if(!simulationParameters.setPlanetParameters("se300_planet_data.csv")){
 			System.out.println("Planet File Not Found!"):
 		}
-		// else if (!simulationParameters.setSpacecraftParameters(spacecraft file))
+		// else if (!simulationParameters.setSpacecraftParameters(spacecraft file)){
+			//System.out.println("Spacecraft File Not Found");
+		//}	
 		else{
 	        ArrayList<PlanetaryBody> planetParams = simulationParameters.getPlanetParameters();
 	        String[] spacecraftParams = simulationParameters.getSpacecraftParameters();

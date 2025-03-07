@@ -1,6 +1,6 @@
 package SE300ProjectCode;
 
-import java.util.Scanner;
+import java.util.*;
 public class Simulation {
 	// Attributes
 	PlanetaryBody planetaryBody = new PlanetaryBody();
@@ -31,18 +31,36 @@ public class Simulation {
 	// Load simulation parameters
    	public void loadParameters() {
 		SimulationParameters simulationParameters = new SimulationParameters();
-	        String[] planetParams = simulationParameters.getPlanetParameters();
+		if(!simulationParameters.setPlanetParameters("se300_planet_data.csv")){
+			System.out.println("Planet File Not Found!"):
+		}
+		// else if (!simulationParameters.setSpacecraftParameters(spacecraft file))
+		else{
+	        ArrayList<PlanetaryBody> planetParams = simulationParameters.getPlanetParameters();
 	        String[] spacecraftParams = simulationParameters.getSpacecraftParameters();
-	        
-	        // Need checking: location of the parameters (row/column)
-	        planetaryBody = new PlanetaryBody(
-	            planetParams[0], // name
-	            Double.parseDouble(planetParams[1]), // mass
-	            Double.parseDouble(planetParams[2]), // radius
-	            Double.parseDouble(planetParams[3]), // oblateness
-	            Double.parseDouble(planetParams[4])); // Rotation rate(rad/s)
+	        //Getting planet parameters from user
+		for (int i = 0; i<planetParams.size(); i++){
+			String planet = "Name: " + planetParams.get(i).getName() + " Mass: " + planetParams.get(i).getMass() + " kg Radius: " + planetParams.get(i).getRadius() + " km Gravitational Acceleration: " + planetParams.get(i).getGravity(0) + " m/s^2";
+			System.out.println(planet);
+		}
+		Scanner scan = new Scanner(System.in);
+		boolean isValidPlanet = false;
+		while(!isValidPlanet) {
+			System.out.println("Please select planet from above list by entering name:");
+			String userPlanet = scan.nextLine();
+			for(int i = 0; i<planets.size(); i++) {
+				if(userPlanet.equalsIgnoreCase(planetParams.get(i).getName())) {
+					planetaryBody = planetParams.get(i);
+					isValidPlanet = true;
+				}
 
-		// 
+			}
+			if(!isValidPlanet) {
+				System.out.println("Error! Invalid planet entered!");
+			}
+		}
+		System.out.println("You selected the planet: " + planetaryBody.getName());
+		}
     	}
 	
 	// Update the simulation state

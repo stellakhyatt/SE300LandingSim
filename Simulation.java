@@ -56,7 +56,7 @@ public class Simulation {
 
 			}
 			if(!isValidPlanet) {
-				System.out.println("Error! Invalid planet entered!");
+				System.out.println("Error! Invalid planet or no planet entered!");
 			}
 		}
 		System.out.println("You selected the planet: " + planetaryBody.getName());

@@ -40,6 +40,8 @@ public class Simulation {
 		else{
 	        ArrayList<PlanetaryBody> planetParams = simulationParameters.getPlanetParameters();
 	        String[] spacecraftParams = simulationParameters.getSpacecraftParameters();
+		//Setup Screen
+		
 	        //Getting planet parameters from user
 		for (int i = 0; i<planetParams.size(); i++){
 			String planet = "Name: " + planetParams.get(i).getName() + " Mass: " + planetParams.get(i).getMass() + " kg Radius: " + planetParams.get(i).getRadius() + " km Gravitational Acceleration: " + planetParams.get(i).getGravity(0) + " m/s^2";

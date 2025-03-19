@@ -41,7 +41,7 @@ public class Simulation {
 	        ArrayList<PlanetaryBody> planetParams = simulationParameters.getPlanetParameters();
 	        String[] spacecraftParams = simulationParameters.getSpacecraftParameters();
 		//Setup Screen
-		spacecraft = new SpaceCraft(" ",0,0);
+		spacecraft = new SpaceCraft(" ",0,0);//Test spacecraft
 		Scanner scan = new Scanner(System.in);
 		planetaryBody = sim.selectPlanet(parameters, scan);
 		boolean doneChanging = false;

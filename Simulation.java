@@ -41,6 +41,108 @@ public class Simulation {
 	        ArrayList<PlanetaryBody> planetParams = simulationParameters.getPlanetParameters();
 	        String[] spacecraftParams = simulationParameters.getSpacecraftParameters();
 		//Setup Screen
+		spacecraft = new SpaceCraft(" ",0,0);
+		Scanner scan = new Scanner(System.in);
+		planetaryBody = sim.selectPlanet(parameters, scan);
+		boolean doneChanging = false;
+		while(!doneChanging) {
+			System.out.println("Please select what you would like to change or do");
+			System.out.println("b: Change Planetary Body from " + planetaryBody.getName());
+			System.out.println("s: Change spacecraft type from " + spacecraft.getType());
+			System.out.println("m: Change spacecraft mass from " + spacecraft.getMass() + " kg");
+			System.out.println("a: Change spacecraft frontal area from " + spacecraft.getFrontalArea() + " m^2") ;
+			System.out.println("p: Change spacecraft initial position from [" + spacecraft.getPosition()[0] + "," + spacecraft.getPosition()[1] + "," + spacecraft.getPosition()[2]+ "] km");
+			System.out.println("v: Change spacecraft initial velocity from [" + spacecraft.getVelocity()[0] + "," + spacecraft.getVelocity()[1] + "," + spacecraft.getVelocity()[2]+ "] km/s");
+			System.out.println("r: Run Simulation");
+			System.out.println("q: Quit Program");
+			String userChoice = scan.nextLine();
+			boolean validInput = false;
+			if( userChoice.equalsIgnoreCase("r")) {
+				doneChanging = true;
+			}
+			else if(userChoice.equalsIgnoreCase("b")) {
+				planetaryBody = sim.selectPlanet(parameters, scan);
+			}
+			else if(userChoice.equalsIgnoreCase("s")) {
+				while(!validInput) {
+					System.out.println("Enter a spacecraft type, valid types are Lander and Capsule");
+					String type = scan.nextLine();
+					if(type.equalsIgnoreCase("Capsule")||type.equalsIgnoreCase("Lander")) {
+						validInput = true;
+						sc.setType(type);
+					}
+					else {
+						System.out.println("ERROR! Invalid spacecraft type entered!");
+					}
+				}
+			}
+			else if(userChoice.equalsIgnoreCase("m")) {
+				while(!validInput) {
+					System.out.println("Enter a spacecraft mass,in kg, must be between 0 and 10000");
+					double mass = scan.nextDouble();
+					if(0 < mass && mass < 10000) {
+						validInput = true;
+						sc.setMass(mass);
+					}
+					else {
+						System.out.println("ERROR! Invalid mass value entered!");
+					}
+				}
+			}
+			else if(userChoice.equalsIgnoreCase("a")) {
+				while(!validInput) {
+					System.out.println("Enter a spacecraft frontal area,in m^2, must be between 0 and 100");
+					double area = scan.nextDouble();
+					if(0 < area && area < 100) {
+						validInput = true;
+						sc.setArea(area);
+					}
+					else {
+						System.out.println("ERROR! Invalid area value entered!");
+					}
+				}
+			}
+			else if(userChoice.equalsIgnoreCase("p")) {
+				while(!validInput) {
+					System.out.println("Current altitude: " + (sc.getAltitude()-planet.getRadius()) + " km");
+					System.out.println("Enter x,y, and z positions, respectively, in km");
+					double x_pos = scan.nextDouble();
+					double y_pos = scan.nextDouble();
+					double z_pos = scan.nextDouble();
+					if(-100000 < x_pos && x_pos < 100000 && -100000 < y_pos && y_pos < 100000 && -100000 < z_pos && z_pos < 100000) {
+						validInput = true;
+						sc.setPosition(x_pos,y_pos,z_pos);
+					}
+					else {
+						System.out.println("ERROR! One or more position values entered is invalid!");
+					}
+				}
+			}
+			else if(userChoice.equalsIgnoreCase("v")) {
+				while(!validInput) {
+					double speed = Math.sqrt((sc.getVelocity()[0] * sc.getVelocity()[0])+(sc.getVelocity()[1] * sc.getVelocity()[1])+(sc.getVelocity()[2] * sc.getVelocity()[2]));
+					System.out.println("Current speed: " + speed + " km/s");
+					System.out.println("Enter x,y, and z velocities, respectively, in km/s");
+					double x_vel = scan.nextDouble();
+					double y_vel = scan.nextDouble();
+					double z_vel = scan.nextDouble();
+					if(-100 < x_vel && x_vel < 100 && -100 < y_vel && y_vel < 100 && -100 < z_vel && z_vel < 100) {
+						validInput = true;
+						sc.setVelocity(x_vel,y_vel,z_vel);
+					}
+					else {
+						System.out.println("ERROR! One or more velocity values entered is invalid!");
+					}
+				}
+			}
+			else if(userChoice.equalsIgnoreCase("q")) {
+				return;
+			}
+			else {
+				System.out.println("ERROR! Invalid input entered!");
+			}
+		}
+		System.out.println("Simulation runs...");//marker for ensuring continues to sim after setup screen
 		}
 	}
 		

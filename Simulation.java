@@ -41,8 +41,10 @@ public class Simulation {
 	        ArrayList<PlanetaryBody> planetParams = simulationParameters.getPlanetParameters();
 	        String[] spacecraftParams = simulationParameters.getSpacecraftParameters();
 		//Setup Screen
+		}
+	}
 		
-	        //Getting planet parameters from user
+	public void PlanetSelection(ArrayList<PlanetaryBody> planetParams, Scanner scan){
 		for (int i = 0; i<planetParams.size(); i++){
 			String planet = "Name: " + planetParams.get(i).getName() 
 					+ " Mass: " + planetParams.get(i).getMass() 
@@ -51,7 +53,6 @@ public class Simulation {
 					+ planetParams.get(i).getGravity(0) + " m/s^2";
 			System.out.println(planet);
 		}
-		Scanner scan = new Scanner(System.in);
 		boolean isValidPlanet = false;
 		while(!isValidPlanet) {
 			System.out.println("Please select planet from above list by entering name:");

@@ -43,7 +43,7 @@ public class Simulation {
 		//Setup Screen
 		spacecraft = new SpaceCraft(" ",0,0);//Test spacecraft
 		Scanner scan = new Scanner(System.in);
-		planetaryBody = sim.selectPlanet(parameters, scan);
+		planetaryBody = selectPlanet(planetParams, scan);
 		boolean doneChanging = false;
 		while(!doneChanging) {
 			System.out.println("Please select what you would like to change or do");

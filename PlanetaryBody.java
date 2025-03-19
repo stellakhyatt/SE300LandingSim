@@ -58,6 +58,9 @@ public class PlanetaryBody {
 			double power = g/(287*B);
 			atmDensity = 1.225*Math.pow((1-(B/T_0)*height),power);
 		}
+		if(atmDensity<0){
+			atmDensity = 0;
+		}
 	}
 	public double getDensity() {
 		return atmDensity;

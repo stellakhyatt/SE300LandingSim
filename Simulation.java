@@ -3,8 +3,8 @@ package SE300ProjectCode;
 import java.util.*;
 public class Simulation {
 	// Attributes
-	PlanetaryBody planetaryBody = new PlanetaryBody(" ",0,0,0,0);
-	SpaceCraft spacecraft = new SpaceCraft(" ",0,0);
+	PlanetaryBody planetaryBody;
+	SpaceCraft spacecraft;
 	private double currentTime;
 
 	// main

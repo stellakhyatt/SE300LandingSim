@@ -199,3 +199,4 @@ public class Simulation {
 		System.out.println("Final spacecraft velocity: " + spacecraft.getVelocity());
 		// Other results?? Trajectories?
 	}
+}

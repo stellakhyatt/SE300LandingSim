@@ -67,7 +67,7 @@ public class Simulation {
 				}
 				else if(userChoice.equalsIgnoreCase("s")) {
 					while(!validInput) {
-						System.out.println("Enter a spacecraft type, valid types are Lander and Capsule");
+						System.out.println("Enter a spacecraft type, valid types are Lander (C_d = 0.83) and Capsule (C_d = 0.42)");
 						String type = scan.nextLine();
 						if(type.equalsIgnoreCase("Capsule")||type.equalsIgnoreCase("Lander")) {
 							validInput = true;

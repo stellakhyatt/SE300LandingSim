@@ -4,7 +4,7 @@ package SE300ProjectCode;
 import java.util.*;
 import java.io.*;
 public class SimulationParameters {
-	private ArrayList<PlanetaryBody> planets;
+	private ArrayList<PlanetaryBody> planets = new ArrayList<PlanetaryBody>();
 	private String [] spacecraftParameters;
 	
 	private ArrayList<String> loadFromFile(String filename) {

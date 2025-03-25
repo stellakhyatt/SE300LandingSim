@@ -21,9 +21,11 @@ public class SpaceCraft {
 		}
 		type = t;
 		if(type.equalsIgnoreCase("Capsule")) {
+			type = "Capsule";
 			drag_coeff = 0.42;
 		}
 		else if(type.equalsIgnoreCase("Lander")) {
+			type = "Lander";
 			drag_coeff = 0.83;//assuming height is double diameter
 		}
 		else {
@@ -34,9 +36,11 @@ public class SpaceCraft {
 	public void setType(String t) {
 		type = t;
 		if(type.equalsIgnoreCase("Capsule")) {
+			type = "Capsule";
 			drag_coeff = 0.42;
 		}
 		else if(type.equalsIgnoreCase("Lander")) {
+			type = "Lander";
 			drag_coeff = 0.83;//assuming height is double diameter
 		}
 		else {

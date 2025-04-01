@@ -53,7 +53,7 @@ public class Simulation {
 				System.out.println("   Mass: " + planetaryBody.getMass() + " kg");
 				System.out.println("   Radius: " + planetaryBody.getRadius() + " km");
 				System.out.println("   Surface graviatational acceleration:" + planetaryBody.getGravity(0) + " m/s^2");
-				System.out.println("s: Change spacecraft type from " + spacecraft.getType());
+				System.out.println("   Spacecraft type:" + spacecraft.getType());
 				System.out.println("m: Change spacecraft mass from " + spacecraft.getMass() + " kg");
 				System.out.println("a: Change spacecraft frontal area from " + spacecraft.getFrontalArea() + " m^2") ;
 				System.out.println("p: Change spacecraft initial position in geocentric equatorial frame from [" + spacecraft.getPosition()[0] + "," + spacecraft.getPosition()[1] + "," + spacecraft.getPosition()[2]+ "] km");
@@ -68,19 +68,6 @@ public class Simulation {
 				}
 				else if(userChoice.equalsIgnoreCase("b")) {
 					PlanetSelection(planetParams, scan);
-				}
-				else if(userChoice.equalsIgnoreCase("s")) {
-					while(!validInput) {
-						System.out.println("Enter a spacecraft type, valid types are Lander (C_d = 0.83) and Capsule (C_d = 0.42)");
-						String type = scan.nextLine();
-						if(type.equalsIgnoreCase("Capsule")||type.equalsIgnoreCase("Lander")) {
-							validInput = true;
-							spacecraft.setType(type);
-						}
-						else {
-							System.out.println("ERROR! Invalid spacecraft type entered!");
-						}
-					}
 				}
 				else if(userChoice.equalsIgnoreCase("m")) {
 					while(!validInput) {

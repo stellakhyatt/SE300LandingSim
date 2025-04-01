@@ -100,4 +100,8 @@ public class SpaceCraft {
 		return velocity;
 	}
 
+	public double getDragCoeff() {
+		return drag_coeff;
+	}
+
 }

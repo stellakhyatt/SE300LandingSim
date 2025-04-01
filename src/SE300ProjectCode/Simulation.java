@@ -50,11 +50,14 @@ public class Simulation {
 			while(!doneChanging) {
 				System.out.println("Please select what you would like to change or do");
 				System.out.println("b: Change Planetary Body from " + planetaryBody.getName());
+				System.out.println("   Mass: " + planetaryBody.getMass() + " kg");
+				System.out.println("   Radius: " + planetaryBody.getRadius() + " km");
+				System.out.println("   Surface graviatational acceleration:" + planetaryBody.getGravity(0) + " m/s^2");
 				System.out.println("s: Change spacecraft type from " + spacecraft.getType());
 				System.out.println("m: Change spacecraft mass from " + spacecraft.getMass() + " kg");
 				System.out.println("a: Change spacecraft frontal area from " + spacecraft.getFrontalArea() + " m^2") ;
 				System.out.println("p: Change spacecraft initial position in geocentric equatorial frame from [" + spacecraft.getPosition()[0] + "," + spacecraft.getPosition()[1] + "," + spacecraft.getPosition()[2]+ "] km");
-				System.out.println("   Altitude:" + (spacecraft.getAltitude() - planetaryBody.getRadius()) +" km";
+				System.out.println("   Altitude: " + (spacecraft.getAltitude() - planetaryBody.getRadius()) +" km";
 				System.out.println("v: Change spacecraft initial velocity in geocentric equatorial frame from [" + spacecraft.getVelocity()[0] + "," + spacecraft.getVelocity()[1] + "," + spacecraft.getVelocity()[2]+ "] km/s");
 				System.out.println("r: Run Simulation");
 				System.out.println("q: Quit Program");

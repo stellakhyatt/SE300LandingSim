@@ -86,6 +86,15 @@ public class PlanetaryBody {
 		return g;
 	}
 
+	public String getSpacecraftType(){
+		if(name.equals("Earth"){
+			return "Capsule";
+		}
+		else{
+			return "Lander";
+		}
+	}
+
 	//Test Main
 	public static void main(String [] args) {
 		SimulationParameters parameters = new SimulationParameters();

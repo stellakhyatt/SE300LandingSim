@@ -98,16 +98,41 @@ public class Simulation {
 				else if(userChoice.equalsIgnoreCase("p")) {
 					while(!validInput) {
 						System.out.println("Current altitude: " + (spacecraft.getAltitude()-planetaryBody.getRadius()) + " km");
-						System.out.println("Enter x, y, and z positions, respectively, in km");
-						double x_pos = scan.nextDouble();
-						double y_pos = scan.nextDouble();
-						double z_pos = scan.nextDouble();
+						boolean validChoice = false;
+						double x_pos = spacecraft.getPosition()[0];
+						double y_pos = spacecraft.getPosition()[1];
+						double z_pos = spacecraft.getPosition()[2];
+						while(!validChoice) {
+							System.out.println("Enter X, Y, or Z to change X, Y, or Z position, or enter D to return to setup page:");
+							String choice = scan.next();
+							if(choice.equalsIgnoreCase("X")) {
+								validChoice = true;
+								System.out.println("Enter x-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+								x_pos = scan.nextDouble();
+							}
+							else if(choice.equalsIgnoreCase("Y")) {
+								validChoice = true;
+								System.out.println("Enter y-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+								y_pos = scan.nextDouble();
+							}
+							else if(choice.equalsIgnoreCase("Z")) {
+								validChoice = true;
+								System.out.println("Enter z-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+								z_pos = scan.nextDouble();
+							}
+							else if(choice.equalsIgnoreCase("D")) {
+								validChoice = true;
+								validInput = true;
+							}
+							else {
+								System.out.println("ERROR! Invalid choice entered! Please enter X,Y,Z, or D!");
+							}
+						}
 						if(-100000 < x_pos && x_pos < 100000 && -100000 < y_pos && y_pos < 100000 && -100000 < z_pos && z_pos < 100000) {
-							validInput = true;
 							spacecraft.setPosition(x_pos,y_pos,z_pos);
 						}
 						else {
-							System.out.println("ERROR! One or more position values entered is invalid!");
+							System.out.println("ERROR! The position value entered is invalid!");
 						}
 					}
 				}
@@ -115,16 +140,41 @@ public class Simulation {
 					while(!validInput) {
 						double speed = Math.sqrt((spacecraft.getVelocity()[0] * spacecraft.getVelocity()[0])+(spacecraft.getVelocity()[1] * spacecraft.getVelocity()[1])+(spacecraft.getVelocity()[2] * spacecraft.getVelocity()[2]));
 						System.out.println("Current speed: " + speed + " km/s");
-						System.out.println("Enter x, y, and z velocities, respectively, in km/s");
-						double x_vel = scan.nextDouble();
-						double y_vel = scan.nextDouble();
-						double z_vel = scan.nextDouble();
+						boolean validChoice = false;
+						double x_vel = spacecraft.getVelocity()[0];
+						double y_vel = spacecraft.getVelocity()[1];
+						double z_vel = spacecraft.getVelocity()[2];
+						while(!validChoice) {
+							System.out.println("Enter X, Y, or Z to change X, Y, or Z velocity, or enter D to return to setup page:");
+							String choice = scan.next();
+							if(choice.equalsIgnoreCase("X")) {
+								validChoice = true;
+								System.out.println("Enter x-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+								x_vel = scan.nextDouble();
+							}
+							else if(choice.equalsIgnoreCase("Y")) {
+								validChoice = true;
+								System.out.println("Enter y-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+								y_vel = scan.nextDouble();
+							}
+							else if(choice.equalsIgnoreCase("Z")) {
+								validChoice = true;
+								System.out.println("Enter z-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+								z_vel = scan.nextDouble();
+							}
+							else if(choice.equalsIgnoreCase("D")) {
+								validChoice = true;
+								validInput = true;
+							}
+							else {
+								System.out.println("ERROR! Invalid choice entered! Please enter X,Y,Z, or D!");
+							}
+						}
 						if(-100 < x_vel && x_vel < 100 && -100 < y_vel && y_vel < 100 && -100 < z_vel && z_vel < 100) {
-							validInput = true;
 							spacecraft.setVelocity(x_vel,y_vel,z_vel);
 						}
 						else {
-							System.out.println("ERROR! One or more velocity values entered is invalid!");
+							System.out.println("ERROR! The velocity value entered is invalid!");
 						}
 					}
 				}

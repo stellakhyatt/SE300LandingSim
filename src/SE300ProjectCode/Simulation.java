@@ -70,9 +70,16 @@ public class Simulation {
 					PlanetSelection(planetParams, scan);
 				}
 				else if(userChoice.equalsIgnoreCase("m")) {
+					double mass = 0;
 					while(!validInput) {
-						System.out.println("Enter a spacecraft mass,in kg, must be between 0 and 10000");
-						double mass = scan.nextDouble();
+						try{
+							Scanner sc = new Scanner(System.in);
+							System.out.println("Enter a spacecraft mass,in kg, must be between 0 and 10000");
+							mass = sc.nextDouble();
+						}
+						catch(Exception e){
+							System.out.println("Must enter a number!");
+						}
 						if(0 < mass && mass < 10000) {
 							validInput = true;
 							spacecraft.setMass(mass);
@@ -83,9 +90,16 @@ public class Simulation {
 					}
 				}
 				else if(userChoice.equalsIgnoreCase("a")) {
+					double area = 0;
 					while(!validInput) {
-						System.out.println("Enter a spacecraft frontal area,in m^2, must be between 0 and 100");
-						double area = scan.nextDouble();
+						try{
+							Scanner sc = new Scanner(System.in);
+							System.out.println("Enter a spacecraft frontal area,in m^2, must be between 0 and 100");
+							area = sc.nextDouble();
+						}
+						catch(Exception e){
+							System.out.println("Must enter a number!");
+						}
 						if(0 < area && area < 100) {
 							validInput = true;
 							spacecraft.setArea(area);
@@ -106,19 +120,39 @@ public class Simulation {
 							System.out.println("Enter X, Y, or Z to change X, Y, or Z position, or enter D to return to setup page:");
 							String choice = scan.next();
 							if(choice.equalsIgnoreCase("X")) {
-								validChoice = true;
-								System.out.println("Enter x-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
-								x_pos = scan.nextDouble();
+								try{
+									Scanner sc = new Scanner(System.in);
+									validChoice = true;
+									System.out.println("Enter x-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+									x_pos = sc.nextDouble();
+								}
+								catch(Exception e){
+									System.out.println("Must enter a number!");
+									x_pos = spacecraft.getPosition()[0];
+								}
 							}
 							else if(choice.equalsIgnoreCase("Y")) {
-								validChoice = true;
-								System.out.println("Enter y-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
-								y_pos = scan.nextDouble();
+								try{
+									Scanner sc = new Scanner(System.in);
+									validChoice = true;
+									System.out.println("Enter y-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+									y_pos = sc.nextDouble();
+								}
+								catch(Exception e){
+									System.out.println("Must enter a number!");
+									y_pos = spacecraft.getPosition()[1];
+								}
 							}
 							else if(choice.equalsIgnoreCase("Z")) {
-								validChoice = true;
-								System.out.println("Enter z-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
-								z_pos = scan.nextDouble();
+								try{
+									Scanner sc = new Scanner(System.in);
+									validChoice = true;
+									System.out.println("Enter z-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+									z_pos = sc.nextDouble();
+								catch{
+									System.out.println("Must enter a number!");
+									z_pos = spacecraft.getPosition()[2];
+								}
 							}
 							else if(choice.equalsIgnoreCase("D")) {
 								validChoice = true;
@@ -148,19 +182,39 @@ public class Simulation {
 							System.out.println("Enter X, Y, or Z to change X, Y, or Z velocity, or enter D to return to setup page:");
 							String choice = scan.next();
 							if(choice.equalsIgnoreCase("X")) {
-								validChoice = true;
-								System.out.println("Enter x-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
-								x_vel = scan.nextDouble();
+								try{
+									Scanner sc = new Scanner(System.in);
+									validChoice = true;
+									System.out.println("Enter x-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+									x_vel = sc.nextDouble();
+								}
+								catch(Exception e){
+									System.out.println("Please enter a number!");
+									x_vel = spacecraft.getVelocity()[0];
+								}
 							}
 							else if(choice.equalsIgnoreCase("Y")) {
-								validChoice = true;
-								System.out.println("Enter y-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
-								y_vel = scan.nextDouble();
+								try{
+									Scanner sc = new Scanner(System.in);
+									validChoice = true;
+									System.out.println("Enter y-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+									y_vel = sc.nextDouble();
+								}
+								catch(Exception e){
+									System.out.println("Please enter a number!");
+									y_vel = spacecraft.getVelocity()[1];
+								}
 							}
 							else if(choice.equalsIgnoreCase("Z")) {
-								validChoice = true;
-								System.out.println("Enter z-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
-								z_vel = scan.nextDouble();
+								try{
+									Scanner sc = new Scanner(System.in);
+									validChoice = true;
+									System.out.println("Enter z-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+									z_vel = scan.nextDouble();
+								catch(Exception e){
+									System.out.println("Please enter a number!");
+									z_vel = spacecraft.getVelocity()[2];
+								}
 							}
 							else if(choice.equalsIgnoreCase("D")) {
 								validChoice = true;

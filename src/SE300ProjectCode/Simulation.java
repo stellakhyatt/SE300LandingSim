@@ -32,8 +32,13 @@ public class Simulation {
 	// Load simulation parameters
 	public boolean loadParameters() {
 		SimulationParameters simulationParameters = new SimulationParameters();
-		if(!simulationParameters.setPlanetParameters("se300_planet_data.csv")){
-			System.out.println("Planet File Failed to Load!");
+		int fileCheck = simulationParameters.setPlanetParameters("se300_planet_data.csv");
+		if(fileCheck == 0){
+			System.out.println("Couldn't find planet file!");
+			return false;
+		}
+		else if(fileCheck == 1){
+			System.out.println("Couldn't read planet file, improper format!");
 			return false;
 		}
 		// else if (!simulationParameters.setSpacecraftParameters(spacecraft file)){

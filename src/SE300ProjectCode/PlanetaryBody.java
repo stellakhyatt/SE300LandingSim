@@ -98,8 +98,11 @@ public class PlanetaryBody {
 	//Test Main
 	public static void main(String [] args) {
 		SimulationParameters parameters = new SimulationParameters();
-		if(!parameters.setPlanetParameters("se300_planet_data.csv")){
+		if(parameters.setPlanetParameters("se300_planet_data.csv") == 0){
 			System.out.println("Planet file not found!");
+		}
+		else if(parameters.setPlanetParameters("se300_planet_data.csv") == 1){
+			System.out.println("Error reading planet file");
 		}
 		else{
 			ArrayList<PlanetaryBody> planets = parameters.getPlanets();

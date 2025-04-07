@@ -154,7 +154,8 @@ public class Simulation {
 									validChoice = true;
 									System.out.println("Enter z-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
 									z_pos = sc.nextDouble();
-								catch{
+								}
+								catch(Exception e){
 									System.out.println("Must enter a number!");
 									z_pos = spacecraft.getPosition()[2];
 								}
@@ -216,6 +217,7 @@ public class Simulation {
 									validChoice = true;
 									System.out.println("Enter z-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
 									z_vel = scan.nextDouble();
+								}
 								catch(Exception e){
 									System.out.println("Please enter a number!");
 									z_vel = spacecraft.getVelocity()[2];

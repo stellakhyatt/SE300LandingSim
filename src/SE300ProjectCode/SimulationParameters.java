@@ -29,16 +29,16 @@ public class SimulationParameters {
 		
 	}
 
-	public boolean setPlanetParameters(String filename){
+	public int setPlanetParameters(String filename){
 		ArrayList<String> data = loadFromFile(filename);
 		if (data == null){
-			return false;
+			return 0;
 		}
 		for(int i = 0; i<data.size(); i++){
 			if(data.get(i) != null){
 				String [] planet = data.get(i).split(",");
 				if(planet.length != 5){
-					return false;
+					return 1;
 				}
 				PlanetaryBody p = new PlanetaryBody(planet[0],
 								    Double.parseDouble(planet[1]),
@@ -48,7 +48,7 @@ public class SimulationParameters {
 				planets.add(p);
 			}
 		}
-		return true;		
+		return 2;		
 	}
 
 	public ArrayList<PlanetaryBody> getPlanets(){

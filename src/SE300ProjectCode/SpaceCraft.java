@@ -10,7 +10,7 @@ public class SpaceCraft {
 	private double[] velocity = new double[3];
 	
 	public SpaceCraft(String t, double m, double a) {
-		if(!t.equalsIgnoreCase("Capsule")|| !t.equalsIgnoreCase("Lander")) {
+		if(!t.equalsIgnoreCase("Capsule")&& !t.equalsIgnoreCase("Lander")) {
 			t = " ";
 		}
 		if(m<0) {

@@ -82,7 +82,7 @@ public class PlanetaryBody {
 	}
 	public double getGravity(double h){
 		double G = 6.67428E-11;
-		double g = (G*mass)/Math.pow(h+radius,2);
+		double g = (G*mass)/Math.pow(((h+radius)*1000),2);
 		return g;
 	}
 

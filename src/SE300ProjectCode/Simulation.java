@@ -85,7 +85,7 @@ public class Simulation {
 						catch(Exception e){
 							System.out.println("Must enter a number!");
 						}
-						if(0 < mass && mass < 10000) {
+						if(0 < mass && mass <= 10000) {
 							validInput = true;
 							spacecraft.setMass(mass);
 						}
@@ -105,7 +105,7 @@ public class Simulation {
 						catch(Exception e){
 							System.out.println("Must enter a number!");
 						}
-						if(0 < area && area < 100) {
+						if(0 < area && area <= 100) {
 							validInput = true;
 							spacecraft.setArea(area);
 						}
@@ -168,7 +168,7 @@ public class Simulation {
 								System.out.println("ERROR! Invalid choice entered! Please enter X,Y,Z, or D!");
 							}
 						}
-						if(-100000 < x_pos && x_pos < 100000 && -100000 < y_pos && y_pos < 100000 && -100000 < z_pos && z_pos < 100000) {
+						if(-100000 <= x_pos && x_pos <= 100000 && -100000 <= y_pos && y_pos <= 100000 && -100000 <= z_pos && z_pos <= 100000) {
 							spacecraft.setPosition(x_pos,y_pos,z_pos);
 						}
 						else {
@@ -231,7 +231,7 @@ public class Simulation {
 								System.out.println("ERROR! Invalid choice entered! Please enter X,Y,Z, or D!");
 							}
 						}
-						if(-100 < x_vel && x_vel < 100 && -100 < y_vel && y_vel < 100 && -100 < z_vel && z_vel < 100) {
+						if(-100 <= x_vel && x_vel <= 100 && -100 <= y_vel && y_vel <= 100 && -100 <= z_vel && z_vel <= 100) {
 							spacecraft.setVelocity(x_vel,y_vel,z_vel);
 						}
 						else {

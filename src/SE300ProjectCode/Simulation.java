@@ -80,7 +80,8 @@ public class Simulation {
 						try{
 							Scanner sc = new Scanner(System.in);
 							System.out.println("Enter a spacecraft mass,in kg, must be between 0 and 10000");
-							mass = sc.nextDouble();
+							String mass_str = sc.nextLine();
+							mass = Double.parseDouble(mass_str);
 						}
 						catch(Exception e){
 							System.out.println("Must enter a number!");
@@ -100,7 +101,8 @@ public class Simulation {
 						try{
 							Scanner sc = new Scanner(System.in);
 							System.out.println("Enter a spacecraft frontal area,in m^2, must be between 0 and 100");
-							area = sc.nextDouble();
+							String area_str = sc.nextLine();
+							area = Double.parseDouble(area_str);
 						}
 						catch(Exception e){
 							System.out.println("Must enter a number!");
@@ -123,13 +125,14 @@ public class Simulation {
 						double z_pos = spacecraft.getPosition()[2];
 						while(!validChoice) {
 							System.out.println("Enter X, Y, or Z to change X, Y, or Z position, or enter D to return to setup page:");
-							String choice = scan.next();
+							String choice = scan.nextLine();
 							if(choice.equalsIgnoreCase("X")) {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
 									System.out.println("Enter x-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
-									x_pos = sc.nextDouble();
+									String x_pos_str = sc.nextLine();
+									x_pos = Double.parseDouble(x_pos_str);
 								}
 								catch(Exception e){
 									System.out.println("Must enter a number!");
@@ -141,7 +144,8 @@ public class Simulation {
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
 									System.out.println("Enter y-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
-									y_pos = sc.nextDouble();
+									String y_pos_str = sc.nextLine();
+									y_pos = Double.parseDouble(y_pos_str);
 								}
 								catch(Exception e){
 									System.out.println("Must enter a number!");
@@ -153,7 +157,8 @@ public class Simulation {
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
 									System.out.println("Enter z-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
-									z_pos = sc.nextDouble();
+									String z_pos_str = sc.nextLine();
+									z_pos = Double.parseDouble(z_pos_str);
 								}
 								catch(Exception e){
 									System.out.println("Must enter a number!");
@@ -186,13 +191,14 @@ public class Simulation {
 						double z_vel = spacecraft.getVelocity()[2];
 						while(!validChoice) {
 							System.out.println("Enter X, Y, or Z to change X, Y, or Z velocity, or enter D to return to setup page:");
-							String choice = scan.next();
+							String choice = scan.nextLine();
 							if(choice.equalsIgnoreCase("X")) {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
 									System.out.println("Enter x-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
-									x_vel = sc.nextDouble();
+									String x_vel_str = sc.nextLine();
+									x_vel = Double.parseDouble(x_vel_str);
 								}
 								catch(Exception e){
 									System.out.println("Please enter a number!");
@@ -204,7 +210,8 @@ public class Simulation {
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
 									System.out.println("Enter y-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
-									y_vel = sc.nextDouble();
+									String y_vel_str = sc.nextLine();
+									y_vel = Double.parseDouble(y_vel_str);
 								}
 								catch(Exception e){
 									System.out.println("Please enter a number!");
@@ -216,7 +223,8 @@ public class Simulation {
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
 									System.out.println("Enter z-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
-									z_vel = scan.nextDouble();
+									String z_vel_str = sc.nextLine();
+									z_vel = Double.parseDouble(z_vel_str);
 								}
 								catch(Exception e){
 									System.out.println("Please enter a number!");

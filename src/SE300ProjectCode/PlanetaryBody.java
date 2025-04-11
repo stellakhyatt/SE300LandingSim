@@ -87,7 +87,7 @@ public class PlanetaryBody {
 	}
 
 	public String getSpacecraftType(){
-		if(name.equals("Earth"){
+		if(name.equals("Earth")){
 			return "Capsule";
 		}
 		else{

@@ -130,7 +130,7 @@ public class Simulation {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
-									System.out.println("Enter x-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+									System.out.println("Enter x-value of spacecraft initial position, in km, in geocentric equatorial frame (-100000 ≦ x ≦ 100000)");
 									String x_pos_str = sc.nextLine();
 									x_pos = Double.parseDouble(x_pos_str);
 								}
@@ -143,7 +143,7 @@ public class Simulation {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
-									System.out.println("Enter y-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+									System.out.println("Enter y-value of spacecraft initial position, in km, in geocentric equatorial frame (-100000 ≦ y ≦ 100000)");
 									String y_pos_str = sc.nextLine();
 									y_pos = Double.parseDouble(y_pos_str);
 								}
@@ -156,7 +156,7 @@ public class Simulation {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
-									System.out.println("Enter z-value of spacecraft initial position, in km, in geocentric equatorial frame (must be greater than -100000 and less than 100000)");
+									System.out.println("Enter z-value of spacecraft initial position, in km, in geocentric equatorial frame (-100000 ≦ z ≦ 100000)");
 									String z_pos_str = sc.nextLine();
 									z_pos = Double.parseDouble(z_pos_str);
 								}
@@ -196,7 +196,7 @@ public class Simulation {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
-									System.out.println("Enter x-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+									System.out.println("Enter x-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (-100 ≦ x ≦ 100)");
 									String x_vel_str = sc.nextLine();
 									x_vel = Double.parseDouble(x_vel_str);
 								}
@@ -209,7 +209,7 @@ public class Simulation {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
-									System.out.println("Enter y-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+									System.out.println("Enter y-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (-100 ≦ y ≦ 100)");
 									String y_vel_str = sc.nextLine();
 									y_vel = Double.parseDouble(y_vel_str);
 								}
@@ -222,7 +222,7 @@ public class Simulation {
 								try{
 									Scanner sc = new Scanner(System.in);
 									validChoice = true;
-									System.out.println("Enter z-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (must be greater than -100 and less than 100)");
+									System.out.println("Enter z-value of spacecraft initial velocity, in km/s, in geocentric equatorial frame (-100 ≦ z ≦ 100)");
 									String z_vel_str = sc.nextLine();
 									z_vel = Double.parseDouble(z_vel_str);
 								}

@@ -73,6 +73,7 @@ public class Simulation {
 				}
 				else if(userChoice.equalsIgnoreCase("b")) {
 					PlanetSelection(planetParams, scan);
+					spacecraft.setType(planetaryBody.getSpacecraftType());
 				}
 				else if(userChoice.equalsIgnoreCase("m")) {
 					double mass = 0;

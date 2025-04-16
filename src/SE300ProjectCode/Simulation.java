@@ -265,7 +265,7 @@ public class Simulation {
 			String planet = "Name: " + planetParams.get(i).getName() 
 					+ " Mass: " + planetParams.get(i).getMass() 
 					+ " kg Radius: " + planetParams.get(i).getRadius() 
-					+ " km Gravitational Acceleration: " 
+					+ " km Surface Gravitational Acceleration: " 
 					+ planetParams.get(i).getGravity(0) + " m/s^2";
 			System.out.println(planet);
 		}

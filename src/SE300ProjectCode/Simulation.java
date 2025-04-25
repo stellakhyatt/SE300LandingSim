@@ -53,29 +53,38 @@ public class Simulation {
 			spacecraft = new SpaceCraft(planetaryBody.getSpacecraftType(),0,0);
 			boolean doneChanging = false;
 			while(!doneChanging) {
-				System.out.println("Please select what you would like to change or do");
-				System.out.println("b: Change Planetary Body from " + planetaryBody.getName());
-				System.out.println("   Mass: " + planetaryBody.getMass() + " kg");
-				System.out.println("   Radius: " + planetaryBody.getRadius() + " km");
-				System.out.println("   Surface graviatational acceleration:" + planetaryBody.getGravity(0) + " m/s^2");
-				System.out.println("   Spacecraft type:" + spacecraft.getType());
-				System.out.println("m: Change spacecraft mass from " + spacecraft.getMass() + " kg");
-				System.out.println("a: Change spacecraft frontal area from " + spacecraft.getFrontalArea() + " m^2") ;
-				System.out.println("p: Change spacecraft initial position in geocentric equatorial frame from [" + spacecraft.getPosition()[0] + "," + spacecraft.getPosition()[1] + "," + spacecraft.getPosition()[2]+ "] km");
-				System.out.println("   Altitude: " + (spacecraft.getAltitude() - planetaryBody.getRadius()) +" km");
-				System.out.println("v: Change spacecraft initial velocity in geocentric equatorial frame from [" + spacecraft.getVelocity()[0] + "," + spacecraft.getVelocity()[1] + "," + spacecraft.getVelocity()[2]+ "] km/s");
-				System.out.println("r: Run Simulation");
-				System.out.println("q: Quit Program");
+				System.out.println("Enter a number to change a parameter: ");
+				System.out.println("[ 1] Planet: " + planetaryBody.getName());
+				System.out.println("     Mass: " + planetaryBody.getMass() + " kg");
+				System.out.println("     Radius: " + planetaryBody.getRadius() + " km");
+				System.out.println("     Surface graviatational acceleration: " + planetaryBody.getGravity(0) + " m/s^2");
+				System.out.println("     Spacecraft type: " + spacecraft.getType());
+				System.out.println("[ 2] Spacecraft mass: " + spacecraft.getMass() + " kg");
+				System.out.println("[ 3] Spacecraft frontal area: " + spacecraft.getFrontalArea() + " m^2");
+				System.out.println("[ 4] Initial argument of perigee: " + spacecraft.getArgumentOfPerigee() + " deg");
+				System.out.println("[ 5] Initial eccentricity: " + spacecraft.getEccentricity());
+				System.out.println("[ 6] Initial angular momentum: " + spacecraft.getAngularMomentum() + " kg km^2/s^2");
+				System.out.println("[ 7] Initial inclination: " + spacecraft.getInclination() + " deg");
+				System.out.println("[ 8] Initial right ascension: " + spacecraft.getRightAscension() + " deg");
+				System.out.println("[ 9] Initial true anomaly: " + spacecraft.getTrueAnomaly() + " deg");		System.out.println("[10] Add maneuver");
+				System.out.println("[11] Remove maneuver");
+				System.out.println("[12] Run simulation");
+				System.out.println("[ q] Quit program");
+
+				/*
+				 * user input 4-9 → Use case 7-12
+				 */
+
 				String userChoice = scan.nextLine();
 				boolean validInput = false;
-				if( userChoice.equalsIgnoreCase("r")) {
+				if( userChoice.equalsIgnoreCase("12")) {
 					doneChanging = true;
 				}
-				else if(userChoice.equalsIgnoreCase("b")) {
+				else if(userChoice.equalsIgnoreCase("1")) {
 					PlanetSelection(planetParams, scan);
 					spacecraft.setType(planetaryBody.getSpacecraftType());
 				}
-				else if(userChoice.equalsIgnoreCase("m")) {
+				else if(userChoice.equalsIgnoreCase("2")) {
 					double mass = 0;
 					while(!validInput) {
 						try{
@@ -96,7 +105,7 @@ public class Simulation {
 						}
 					}
 				}
-				else if(userChoice.equalsIgnoreCase("a")) {
+				else if(userChoice.equalsIgnoreCase("3")) {
 					double area = 0;
 					while(!validInput) {
 						try{
@@ -117,6 +126,7 @@ public class Simulation {
 						}
 					}
 				}
+				/* 
 				else if(userChoice.equalsIgnoreCase("p")) {
 					while(!validInput) {
 						System.out.println("Current altitude: " + (spacecraft.getAltitude()-planetaryBody.getRadius()) + " km");
@@ -248,6 +258,7 @@ public class Simulation {
 						}
 					}
 				}
+				*/
 				else if(userChoice.equalsIgnoreCase("q")) {
 					return doneChanging;
 				}
@@ -311,4 +322,3 @@ public class Simulation {
 		// Other results?? Trajectories?
 	}
 }
-

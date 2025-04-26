@@ -126,6 +126,161 @@ public class Simulation {
 						}
 					}
 				}
+				else if(userChoice.equalsIgnoreCase("4")) {
+					double perigee = 0;
+					System.out.println("Initial argument of perigee: " + spacecraft.getArgumentOfPerigee() + " deg");
+				
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.println("Enter a new value for initial argument of perigee in deg (0 < ω < 360):");
+							String perig_str = sc.nextLine();
+				
+							if (perig_str.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything."); // Req 7.2.1
+								continue;
+							}
+				
+							perigee = Double.parseDouble(perig_str);
+				
+							if (perigee < 0 || perigee > 360) {
+								System.out.println("Invalid: Angle must be at least 0 or at most 360."); // Req 7.2.3
+								continue;
+							}
+				
+							// Check: Valid input (Req 7.3)
+							spacecraft.setArgumentOfPerigee(perigee);
+							validInput = true;
+				
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number."); // Req 7.2.2
+						}
+					}
+				}
+				else if (userChoice.equalsIgnoreCase("5")) {
+					System.out.println("Current eccentricity: " + spacecraft.getEccentricity());
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial eccentricity (0 < e < 1): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double ecc = Double.parseDouble(input);
+							if (ecc <= 0) {
+								System.out.println("Invalid: Eccentricity must be a positive number.");
+							} else if (ecc >= 1) {
+								System.out.println("Invalid: Eccentricity must be less than 1.");
+							} else if (planetaryBody.getRadius() * 1.01 >= spacecraft.getSemiMajorAxis() * (1 - ecc)) {
+								System.out.println("Invalid: That eccentricity is too large, the orbit intersects with the planet.");
+								System.out.print("Press Enter to return to the setup menu...");
+								sc.nextLine();
+								break;
+							} else {
+								spacecraft.setEccentricity(ecc);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+				else if (userChoice.equalsIgnoreCase("6")) {
+					System.out.println("Initial angular momentum: " + spacecraft.getAngularMomentum() + " kg km^2/s");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial angular momentum in kg km^2/s (0 < p < 100000): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double momentum = Double.parseDouble(input);
+							if (momentum <= 0) {
+								System.out.println("Invalid: Angular momentum must be a positive number.");
+							} else if (momentum > 100000) {
+								System.out.println("Invalid: That number is too large!");
+							} else {
+								spacecraft.setAngularMomentum(momentum);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+				else if (userChoice.equalsIgnoreCase("7")) {
+					System.out.println("Initial inclination: " + spacecraft.getInclination() + " deg");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial inclination in deg (0 < θ < 360): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double inc = Double.parseDouble(input);
+							if (inc < 0 || inc > 360) {
+								System.out.println("Invalid: Inclination must be at least 0 and at most 360.");
+							} else {
+								spacecraft.setInclination(inc);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+				else if (userChoice.equalsIgnoreCase("8")) {
+					System.out.println("Initial right ascension: " + spacecraft.getRightAscension() + " deg");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for right ascension in deg (0 < α < 360): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double ra = Double.parseDouble(input);
+							if (ra < 0 || ra > 360) {
+								System.out.println("Invalid: Right ascension must be at least 0 and at most 360.");
+							} else {
+								spacecraft.setRightAscension(ra);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+				else if (userChoice.equalsIgnoreCase("9")) {
+					System.out.println("Initial true anomaly: " + spacecraft.getTrueAnomaly() + " deg");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial true anomaly in deg (0 < ν < 360): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double anomaly = Double.parseDouble(input);
+							if (anomaly < 0 || anomaly > 360) {
+								System.out.println("Invalid: True anomaly must be at least 0 and at most 360.");
+							} else {
+								spacecraft.setTrueAnomaly(anomaly);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
 				/* 
 				else if(userChoice.equalsIgnoreCase("p")) {
 					while(!validInput) {
@@ -322,3 +477,4 @@ public class Simulation {
 		// Other results?? Trajectories?
 	}
 }
+

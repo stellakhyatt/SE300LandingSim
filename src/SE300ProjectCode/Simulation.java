@@ -32,15 +32,30 @@ public class Simulation {
 	// Load simulation parameters
 	public boolean loadParameters() {
 		SimulationParameters simulationParameters = new SimulationParameters();
-		int fileCheck = simulationParameters.setPlanetParameters("se300_planet_data.csv");
-		if(fileCheck == 0){
-			System.out.println("Couldn't find planet file!");
+		int fileCheck_planet = simulationParameters.setPlanetParameters("se300_planet_data.csv");
+		int fileCheck_spacecraft = simulationParameters.setPlanetParameters("se300_parameters.csv");
+		if(fileCheck_planet == 0){
+			System.out.println("Error: File planets.csv is missing. New File was created");
 			return false;
 		}
-		else if(fileCheck == 1){
-			System.out.println("Couldn't read planet file, improper format!");
+		else if(fileCheck_planet == 1){
+			System.out.println("Error: File planets.csv has missing data. Delete it and run the program again to generate a new file.");
+			return false;
+		} 
+		else if(fileCheck_planet == 3) {
+			System.out.println("Error: File planets.csv has invalid data. Delete it and run the program again to generate a new file.");
 			return false;
 		}
+		/* 
+		else if(fileCheck_spacecraft == 0){
+			System.out.println("Couldn't find spacecraft file!");
+			return false;
+		}
+		else if(fileCheck_spacecraft == 1){
+			System.out.println("Error: File parameters.csv has invalid data. Delete it and run the program again to generate a new file.");
+			return false;
+		}
+		*/
 		// else if (!simulationParameters.setSpacecraftParameters(spacecraft file)){
 		//System.out.println("Spacecraft File Not Found");
 		//}	
@@ -89,7 +104,7 @@ public class Simulation {
 					while(!validInput) {
 						try{
 							Scanner sc = new Scanner(System.in);
-							System.out.println("Enter a spacecraft mass,in kg, must be between 0 and 10000");
+							System.out.print("Enter a spacecraft mass,in kg, must be between 0 and 10000: ");
 							String mass_str = sc.nextLine();
 							mass = Double.parseDouble(mass_str);
 						}
@@ -110,7 +125,7 @@ public class Simulation {
 					while(!validInput) {
 						try{
 							Scanner sc = new Scanner(System.in);
-							System.out.println("Enter a spacecraft frontal area,in m^2, must be between 0 and 100");
+							System.out.print("Enter a spacecraft frontal area,in m^2, must be between 0 and 100: ");
 							String area_str = sc.nextLine();
 							area = Double.parseDouble(area_str);
 						}
@@ -133,7 +148,7 @@ public class Simulation {
 					while (!validInput) {
 						try {
 							Scanner sc = new Scanner(System.in);
-							System.out.println("Enter a new value for initial argument of perigee in deg (0 < ω < 360):");
+							System.out.print("Enter a new value for initial argument of perigee in deg (0 < ω < 360):");
 							String perig_str = sc.nextLine();
 				
 							if (perig_str.trim().isEmpty()) {
@@ -187,12 +202,13 @@ public class Simulation {
 						}
 					}
 				}
+
 				else if (userChoice.equalsIgnoreCase("6")) {
 					System.out.println("Initial angular momentum: " + spacecraft.getAngularMomentum() + " kg km^2/s");
 					while (!validInput) {
 						try {
 							Scanner sc = new Scanner(System.in);
-							System.out.print("Enter a new value for initial angular momentum in kg km^2/s (0 < p < 100000): ");
+							System.out.print("Enter a new value for initial angular momentum in kg km^2/ (0 < p < 100000): ");
 							String input = sc.nextLine();
 							if (input.trim().isEmpty()) {
 								System.out.println("Invalid: You did not enter anything.");
@@ -212,6 +228,7 @@ public class Simulation {
 						}
 					}
 				}
+
 				else if (userChoice.equalsIgnoreCase("7")) {
 					System.out.println("Initial inclination: " + spacecraft.getInclination() + " deg");
 					while (!validInput) {
@@ -235,6 +252,7 @@ public class Simulation {
 						}
 					}
 				}
+
 				else if (userChoice.equalsIgnoreCase("8")) {
 					System.out.println("Initial right ascension: " + spacecraft.getRightAscension() + " deg");
 					while (!validInput) {
@@ -258,6 +276,7 @@ public class Simulation {
 						}
 					}
 				}
+
 				else if (userChoice.equalsIgnoreCase("9")) {
 					System.out.println("Initial true anomaly: " + spacecraft.getTrueAnomaly() + " deg");
 					while (!validInput) {
@@ -414,7 +433,7 @@ public class Simulation {
 					}
 				}
 				*/
-				else if(userChoice.equalsIgnoreCase("q")) {
+				else if(userChoice.equalsIgnoreCase("q") || userChoice.equalsIgnoreCase("quit") || userChoice.equalsIgnoreCase("exit")) {
 					return doneChanging;
 				}
 				else {

@@ -1,6 +1,5 @@
 package SE300ProjectCode;
 
-import java.math.*;
 import java.util.ArrayList;
 public class PlanetaryBody {
 	private double mass;
@@ -9,8 +8,11 @@ public class PlanetaryBody {
 	private double rotationRate;
 	private double oblateness;
 	private double atmDensity;
+
+	// New
+	private double atmGravity;
 	
-	public PlanetaryBody(String n, double m, double r, double rr, double o) {
+	public PlanetaryBody(String n, double m, double r, double rr, double roh, double g) {
 		if(m<0) {
 			m = 0;
 		}
@@ -21,9 +23,12 @@ public class PlanetaryBody {
 		radius = r;
 		name = n;
 		rotationRate = rr;
-		oblateness = o;
-		atmDensity = 0;
+		//oblateness = o;
+		atmDensity = roh;
+		atmGravity = g;
 	}
+
+
 	
 	public void setDensity(double height) {
 		double T = 0;

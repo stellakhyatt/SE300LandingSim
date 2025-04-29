@@ -32,15 +32,30 @@ public class Simulation {
 	// Load simulation parameters
 	public boolean loadParameters() {
 		SimulationParameters simulationParameters = new SimulationParameters();
-		int fileCheck = simulationParameters.setPlanetParameters("se300_planet_data.csv");
-		if(fileCheck == 0){
-			System.out.println("Couldn't find planet file!");
+		int fileCheck_planet = simulationParameters.setPlanetParameters("se300_planet_data.csv");
+		int fileCheck_spacecraft = simulationParameters.setPlanetParameters("se300_parameters.csv");
+		if(fileCheck_planet == 0){
+			System.out.println("Error: File planets.csv is missing. New File was created");
 			return false;
 		}
-		else if(fileCheck == 1){
-			System.out.println("Couldn't read planet file, improper format!");
+		else if(fileCheck_planet == 1){
+			System.out.println("Error: File planets.csv has missing data. Delete it and run the program again to generate a new file.");
+			return false;
+		} 
+		else if(fileCheck_planet == 3) {
+			System.out.println("Error: File planets.csv has invalid data. Delete it and run the program again to generate a new file.");
 			return false;
 		}
+		/* 
+		else if(fileCheck_spacecraft == 0){
+			System.out.println("Couldn't find spacecraft file!");
+			return false;
+		}
+		else if(fileCheck_spacecraft == 1){
+			System.out.println("Error: File parameters.csv has invalid data. Delete it and run the program again to generate a new file.");
+			return false;
+		}
+		*/
 		// else if (!simulationParameters.setSpacecraftParameters(spacecraft file)){
 		//System.out.println("Spacecraft File Not Found");
 		//}	
@@ -53,34 +68,43 @@ public class Simulation {
 			spacecraft = new SpaceCraft(planetaryBody.getSpacecraftType(),0,0);
 			boolean doneChanging = false;
 			while(!doneChanging) {
-				System.out.println("Please select what you would like to change or do");
-				System.out.println("b: Change Planetary Body from " + planetaryBody.getName());
-				System.out.println("   Mass: " + planetaryBody.getMass() + " kg");
-				System.out.println("   Radius: " + planetaryBody.getRadius() + " km");
-				System.out.println("   Surface graviatational acceleration:" + planetaryBody.getGravity(0) + " m/s^2");
-				System.out.println("   Spacecraft type:" + spacecraft.getType());
-				System.out.println("m: Change spacecraft mass from " + spacecraft.getMass() + " kg");
-				System.out.println("a: Change spacecraft frontal area from " + spacecraft.getFrontalArea() + " m^2") ;
-				System.out.println("p: Change spacecraft initial position in geocentric equatorial frame from [" + spacecraft.getPosition()[0] + "," + spacecraft.getPosition()[1] + "," + spacecraft.getPosition()[2]+ "] km");
-				System.out.println("   Altitude: " + (spacecraft.getAltitude() - planetaryBody.getRadius()) +" km");
-				System.out.println("v: Change spacecraft initial velocity in geocentric equatorial frame from [" + spacecraft.getVelocity()[0] + "," + spacecraft.getVelocity()[1] + "," + spacecraft.getVelocity()[2]+ "] km/s");
-				System.out.println("r: Run Simulation");
-				System.out.println("q: Quit Program");
+				System.out.println("Enter a number to change a parameter: ");
+				System.out.println("[ 1] Planet: " + planetaryBody.getName());
+				System.out.println("     Mass: " + planetaryBody.getMass() + " kg");
+				System.out.println("     Radius: " + planetaryBody.getRadius() + " km");
+				System.out.println("     Surface graviatational acceleration: " + planetaryBody.getGravity(0) + " m/s^2");
+				System.out.println("     Spacecraft type: " + spacecraft.getType());
+				System.out.println("[ 2] Spacecraft mass: " + spacecraft.getMass() + " kg");
+				System.out.println("[ 3] Spacecraft frontal area: " + spacecraft.getFrontalArea() + " m^2");
+				System.out.println("[ 4] Initial argument of perigee: " + spacecraft.getArgumentOfPerigee() + " deg");
+				System.out.println("[ 5] Initial eccentricity: " + spacecraft.getEccentricity());
+				System.out.println("[ 6] Initial angular momentum: " + spacecraft.getAngularMomentum() + " kg km^2/s^2");
+				System.out.println("[ 7] Initial inclination: " + spacecraft.getInclination() + " deg");
+				System.out.println("[ 8] Initial right ascension: " + spacecraft.getRightAscension() + " deg");
+				System.out.println("[ 9] Initial true anomaly: " + spacecraft.getTrueAnomaly() + " deg");		System.out.println("[10] Add maneuver");
+				System.out.println("[11] Remove maneuver");
+				System.out.println("[12] Run simulation");
+				System.out.println("[ q] Quit program");
+
+				/*
+				 * user input 4-9 → Use case 7-12
+				 */
+
 				String userChoice = scan.nextLine();
 				boolean validInput = false;
-				if( userChoice.equalsIgnoreCase("r")) {
+				if( userChoice.equalsIgnoreCase("12")) {
 					doneChanging = true;
 				}
-				else if(userChoice.equalsIgnoreCase("b")) {
+				else if(userChoice.equalsIgnoreCase("1")) {
 					PlanetSelection(planetParams, scan);
 					spacecraft.setType(planetaryBody.getSpacecraftType());
 				}
-				else if(userChoice.equalsIgnoreCase("m")) {
+				else if(userChoice.equalsIgnoreCase("2")) {
 					double mass = 0;
 					while(!validInput) {
 						try{
 							Scanner sc = new Scanner(System.in);
-							System.out.println("Enter a spacecraft mass,in kg, must be between 0 and 10000");
+							System.out.print("Enter a spacecraft mass,in kg, must be between 0 and 10000: ");
 							String mass_str = sc.nextLine();
 							mass = Double.parseDouble(mass_str);
 						}
@@ -96,12 +120,12 @@ public class Simulation {
 						}
 					}
 				}
-				else if(userChoice.equalsIgnoreCase("a")) {
+				else if(userChoice.equalsIgnoreCase("3")) {
 					double area = 0;
 					while(!validInput) {
 						try{
 							Scanner sc = new Scanner(System.in);
-							System.out.println("Enter a spacecraft frontal area,in m^2, must be between 0 and 100");
+							System.out.print("Enter a spacecraft frontal area,in m^2, must be between 0 and 100: ");
 							String area_str = sc.nextLine();
 							area = Double.parseDouble(area_str);
 						}
@@ -117,6 +141,166 @@ public class Simulation {
 						}
 					}
 				}
+				else if(userChoice.equalsIgnoreCase("4")) {
+					double perigee = 0;
+					System.out.println("Initial argument of perigee: " + spacecraft.getArgumentOfPerigee() + " deg");
+				
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial argument of perigee in deg (0 < ω < 360):");
+							String perig_str = sc.nextLine();
+				
+							if (perig_str.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything."); // Req 7.2.1
+								continue;
+							}
+				
+							perigee = Double.parseDouble(perig_str);
+				
+							if (perigee < 0 || perigee > 360) {
+								System.out.println("Invalid: Angle must be at least 0 or at most 360."); // Req 7.2.3
+								continue;
+							}
+				
+							// Check: Valid input (Req 7.3)
+							spacecraft.setArgumentOfPerigee(perigee);
+							validInput = true;
+				
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number."); // Req 7.2.2
+						}
+					}
+				}
+				else if (userChoice.equalsIgnoreCase("5")) {
+					System.out.println("Current eccentricity: " + spacecraft.getEccentricity());
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial eccentricity (0 < e < 1): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double ecc = Double.parseDouble(input);
+							if (ecc <= 0) {
+								System.out.println("Invalid: Eccentricity must be a positive number.");
+							} else if (ecc >= 1) {
+								System.out.println("Invalid: Eccentricity must be less than 1.");
+							} else if (planetaryBody.getRadius() * 1.01 >= spacecraft.getSemiMajorAxis() * (1 - ecc)) {
+								System.out.println("Invalid: That eccentricity is too large, the orbit intersects with the planet.");
+								System.out.print("Press Enter to return to the setup menu...");
+								sc.nextLine();
+								break;
+							} else {
+								spacecraft.setEccentricity(ecc);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+
+				else if (userChoice.equalsIgnoreCase("6")) {
+					System.out.println("Initial angular momentum: " + spacecraft.getAngularMomentum() + " kg km^2/s");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial angular momentum in kg km^2/ (0 < p < 100000): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double momentum = Double.parseDouble(input);
+							if (momentum <= 0) {
+								System.out.println("Invalid: Angular momentum must be a positive number.");
+							} else if (momentum > 100000) {
+								System.out.println("Invalid: That number is too large!");
+							} else {
+								spacecraft.setAngularMomentum(momentum);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+
+				else if (userChoice.equalsIgnoreCase("7")) {
+					System.out.println("Initial inclination: " + spacecraft.getInclination() + " deg");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial inclination in deg (0 < θ < 360): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double inc = Double.parseDouble(input);
+							if (inc < 0 || inc > 360) {
+								System.out.println("Invalid: Inclination must be at least 0 and at most 360.");
+							} else {
+								spacecraft.setInclination(inc);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+
+				else if (userChoice.equalsIgnoreCase("8")) {
+					System.out.println("Initial right ascension: " + spacecraft.getRightAscension() + " deg");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for right ascension in deg (0 < α < 360): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double ra = Double.parseDouble(input);
+							if (ra < 0 || ra > 360) {
+								System.out.println("Invalid: Right ascension must be at least 0 and at most 360.");
+							} else {
+								spacecraft.setRightAscension(ra);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+
+				else if (userChoice.equalsIgnoreCase("9")) {
+					System.out.println("Initial true anomaly: " + spacecraft.getTrueAnomaly() + " deg");
+					while (!validInput) {
+						try {
+							Scanner sc = new Scanner(System.in);
+							System.out.print("Enter a new value for initial true anomaly in deg (0 < ν < 360): ");
+							String input = sc.nextLine();
+							if (input.trim().isEmpty()) {
+								System.out.println("Invalid: You did not enter anything.");
+								continue;
+							}
+							double anomaly = Double.parseDouble(input);
+							if (anomaly < 0 || anomaly > 360) {
+								System.out.println("Invalid: True anomaly must be at least 0 and at most 360.");
+							} else {
+								spacecraft.setTrueAnomaly(anomaly);
+								validInput = true;
+							}
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid: You did not enter a number.");
+						}
+					}
+				}
+				/* 
 				else if(userChoice.equalsIgnoreCase("p")) {
 					while(!validInput) {
 						System.out.println("Current altitude: " + (spacecraft.getAltitude()-planetaryBody.getRadius()) + " km");
@@ -248,7 +432,8 @@ public class Simulation {
 						}
 					}
 				}
-				else if(userChoice.equalsIgnoreCase("q")) {
+				*/
+				else if(userChoice.equalsIgnoreCase("q") || userChoice.equalsIgnoreCase("quit") || userChoice.equalsIgnoreCase("exit")) {
 					return doneChanging;
 				}
 				else {

@@ -1,5 +1,4 @@
 package SE300ProjectCode;
-import java.math.*;
 public class SpaceCraft {
 	private double mass;
 	private double frontalArea;
@@ -8,6 +7,15 @@ public class SpaceCraft {
 	private double altitude;
 	private double[] position = new double[3];
 	private double[] velocity = new double[3];
+
+	// Provisional parameters
+	private double argumentOfPerigee = 45;
+    private double eccentricity = 0;
+    private double angularMomentum = 0;
+    private double inclination = 0;
+    private double rightAscension = 0;
+    private double trueAnomaly = 0;
+	private double semiMajorAxis = 100000;
 	
 	public SpaceCraft(String t, double m, double a) {
 		if(!t.equalsIgnoreCase("Capsule")&& !t.equalsIgnoreCase("Lander")) {
@@ -102,6 +110,64 @@ public class SpaceCraft {
 
 	public double getDragCoeff() {
 		return drag_coeff;
+	}
+
+
+	// Add setters and getters
+	public void setArgumentOfPerigee(double argumentOfPerigee) {
+		this.argumentOfPerigee = argumentOfPerigee;
+	}
+	
+	public void setEccentricity(double eccentricity) {
+		this.eccentricity = eccentricity;
+	}
+	
+	public void setAngularMomentum(double angularMomentum) {
+		this.angularMomentum = angularMomentum;
+	}
+	
+	public void setInclination(double inclination) {
+		this.inclination = inclination;
+	}
+	
+	public void setRightAscension(double rightAscension) {
+		this.rightAscension = rightAscension;
+	}
+	
+	public void setTrueAnomaly(double trueAnomaly) {
+		this.trueAnomaly = trueAnomaly;
+	}
+	
+	public void setSemiMajorAxis(double semiMajorAxis) {
+		this.semiMajorAxis = semiMajorAxis;
+	}
+
+    public double getArgumentOfPerigee() {
+        return argumentOfPerigee;
+    }
+
+    public double getEccentricity() {
+        return eccentricity;
+    }
+
+    public double getAngularMomentum() {
+        return angularMomentum;
+    }
+
+    public double getInclination() {
+        return inclination;
+    }
+
+    public double getRightAscension() {
+        return rightAscension;
+    }
+
+    public double getTrueAnomaly() {
+        return trueAnomaly;
+    }
+
+	public double getSemiMajorAxis(){
+		return semiMajorAxis;
 	}
 
 }

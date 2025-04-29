@@ -106,11 +106,11 @@ public class SimulationParameters {
 
 				PlanetaryBody p;
                             p = new PlanetaryBody(planet[0],
-													mass,                      
-													radius,              
-													rotationRate,
-													atmDensity,
-													Double.parseDouble(planet[5]));
+						mass,                      
+						radius,              
+						rotationRate,
+						atmDensity,
+						Double.parseDouble(planet[5]));
 				planets.add(p);
 			}
 		}

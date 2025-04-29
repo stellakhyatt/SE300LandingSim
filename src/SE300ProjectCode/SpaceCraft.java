@@ -10,11 +10,11 @@ public class SpaceCraft {
 
 	// Provisional parameters
 	private double argumentOfPerigee = 45;
-	private double eccentricity = 0;
-    	private double angularMomentum = 0;
-    	private double inclination = 0;
-    	private double rightAscension = 0;
-    	private double trueAnomaly = 0;
+    private double eccentricity = 0;
+    private double angularMomentum = 0;
+    private double inclination = 0;
+    private double rightAscension = 0;
+    private double trueAnomaly = 0;
 	private double semiMajorAxis = 100000;
 	
 	public SpaceCraft(String t, double m, double a) {
@@ -141,29 +141,31 @@ public class SpaceCraft {
 	public void setSemiMajorAxis(double semiMajorAxis) {
 		this.semiMajorAxis = semiMajorAxis;
 	}
-	public double getArgumentOfPerigee() {
-        	return argumentOfPerigee;
-   	}
 
-    	public double getEccentricity() {
-        	return eccentricity;
-    	}
+    public double getArgumentOfPerigee() {
+        return argumentOfPerigee;
+    }
 
-    	public double getAngularMomentum() {
-        	return angularMomentum;
-    	}
+    public double getEccentricity() {
+        return eccentricity;
+    }
 
-   	 public double getInclination() {
-        	return inclination;
-    	}
+    public double getAngularMomentum() {
+        return angularMomentum;
+    }
 
-    	public double getRightAscension() {
-        	return rightAscension;
-    	}
+    public double getInclination() {
+        return inclination;
+    }
 
-    	public double getTrueAnomaly() {
-        	return trueAnomaly;
-    	}
+    public double getRightAscension() {
+        return rightAscension;
+    }
+
+    public double getTrueAnomaly() {
+        return trueAnomaly;
+    }
+
 	public double getSemiMajorAxis(){
 		return semiMajorAxis;
 	}
